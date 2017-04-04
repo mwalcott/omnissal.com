@@ -1,0 +1,16 @@
+.btn {
+	@include round(0px);
+	text-transform: uppercase;
+}
+.btn-primary {
+	background: $brand-secondary;
+	border: none;
+}
+.btn-secondary {
+	color: $brand-secondary;
+	border: none;
+	&:hover {
+		color: $brand-primary;
+		background-color: $white;
+	}
+}

@@ -1,0 +1,132 @@
+header.banner {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background: $white;
+	width: 250px;
+	padding-left: 15px;
+	padding-right: 15px;
+	@include light-shadow();
+	text-align: center;
+	z-index: 200;
+	.social {
+		border-top: 1px solid #efefef;
+		position: absolute;
+		bottom: 0;
+		left: 15px;
+		right: 15px;
+		padding: 10px 0 15px;
+		font-size: 12px;
+		line-height: 18px;
+		address {
+			margin-bottom: 10px;
+		}
+		ul {
+			list-style: none;
+			padding: 10px 0 0;
+			margin: 0;
+			li {
+				display: inline-block;
+				a {
+					display: block;
+					padding: 0 5px;
+				}
+			}
+		}
+	}
+	a.brand {
+		display: block;
+		margin: 20% auto;
+		max-width: 200px;
+		font-size: 14px;
+		font-weight: 700;
+		line-height: 16px;
+		img {
+			margin-bottom: 10px;
+		}
+		span {
+			display: block;
+			color: $brand-secondary;
+		}
+	}
+}
+
+#menu-primary {
+	display: block;
+	margin-bottom: 50px;
+	font-weight: 300;
+	li {
+		display: block;
+		position: relative;
+		a {
+			display: block;
+			padding: 5px 0;
+			&:hover {
+				color: $brand-secondary;
+			}
+		}
+		&.active {
+			a {
+				color: $brand-secondary;
+				font-weight: 700;
+			}
+		}
+		.sub-menu {
+			text-align: left;
+			position: absolute;
+			top: 0;
+			left: 100%;
+			background: $brand-secondary;
+			padding: 5px 0;
+ 			z-index: 2000;
+			width: 0px;
+			opacity: 0;
+			//@include round(3px);
+			@include transition(.5s);
+			li {
+				padding: 0;
+				a {
+					display: block;
+					padding: 5px 15px;
+					color: #fff;
+					font-weight: 400;
+					font-size: 14px;
+					position: relative;
+					white-space: nowrap;
+					overflow: hidden;
+					&:before {
+						content: '';
+						width: 0px;
+						height: 6px;
+						background: $white;
+						position: absolute;
+						left: -2px;
+						top: 50%;
+						margin-top: -3px;
+						@include transition(.5s);
+						@include round(20px);
+					}
+					&:hover {
+						&:before {
+							width: 10px;
+						}
+					}
+				}
+			}
+		}
+		&:hover {
+			.sub-menu {
+				width: 160px;
+				opacity: 1;
+			}
+		}
+/*
+		&.menu-services {
+			.sub-menu {
+				display: block;
+			}
+		}
+*/
+	}
+}
