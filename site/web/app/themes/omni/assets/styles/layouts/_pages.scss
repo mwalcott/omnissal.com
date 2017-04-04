@@ -1,6 +1,6 @@
 #hero {
 	position: relative;
-	z-index: 1;
+	z-index: 1000;
 	background-color: #000;
 	img {
 		width: 100%;
@@ -46,15 +46,14 @@
 
 // Page Header Styles
 .page-header {
-	padding: 1em 65px;
+	padding: 0;
+	margin-top: 3em;
 	margin-bottom: 2em;
-	text-align: center;
-	background: $brand-primary;
-	display: inline-block;
-	margin-left: -65px;
 	h1 {
 		margin: 0;
-		color: $white;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: $brand-primary;
 	}
 }
 
@@ -62,40 +61,140 @@
 main {
 	
 	p {
-		font-weight: 300;	
+		font-weight: 400;	
 		&:last-child {
 			margin-bottom: 0;
 		}
 	}
 	.main-content {
-		margin-bottom: 2em;
+		margin-bottom: 3em;
 	}
+	
 	.services-block {
 		margin-left: -65px;
 		margin-right: -65px;
 		margin-bottom: 2em;
 		color: $white;
-		text-align: center;
 		.col-sm-4 {
 			@include cover();
-			padding-top: 2em;
-			padding-bottom: 2em;
 			position: relative;
 			@include transition(.5s);
-			-webkit-box-shadow:inset 0 0 2000px 0 rgba(0,0,0,.5);
-			box-shadow:inset 0 0 2000px 0 rgba(0,0,0,.5);
-			text-shadow: 1px 1px 2px #000000;
+			overflow: hidden;
+			h3 {
+				text-transform: uppercase;
+				font-size: 1.3em;
+				padding: 0 15px;
+				margin-bottom: 1em;
+			}
 			p {
-				padding: 0 1em;
+				padding: 0 15px;
 				margin-bottom: 1.5em;
+				font-size: .9em;
+				&:last-child {
+					margin-bottom: 0;
+				}
 			}
 			.btn {
 				text-shadow: 0px 0px 0px #000000;
 			}
+			
+			h3.service-heading {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				margin: 0;
+				padding: 15px 30px;	
+				@include transition(.5s);
+				z-index: 99;
+				//@include transparent-background($r,$g,$b,$a)
+			}
+			.full-content {
+				top: -500px;
+				margin-left: -15px;
+				margin-right: -15px;
+				padding: 2em 15px;
+				z-index: 100;
+				position: relative;
+				@include transition(.5s);
+			}
+			
+			&.sprinkler-installation {
+				h3.service-heading,
+				.full-content {
+					@include transparent-background(72,125,165,.9)
+				}
+				.btn-secondary {
+					color: $brand-blue;
+				}
+			}
+			&.sprinkler-repair {
+				h3.service-heading,
+				.full-content {
+					@include transparent-background(114,71,96,.9)
+				}
+				.btn-secondary {
+					color: $brand-purple;
+				}
+			}
+			&.landscaping {
+				h3.service-heading,
+				.full-content {
+					@include transparent-background(234,191,63,.9)
+				}
+				.btn-secondary {
+					color: $brand-yellow;
+				}
+			}
+
 			&:hover {
+/*
 				-webkit-box-shadow:inset 0 0 2000px 0 rgba(0,0,0,.8);
 				box-shadow:inset 0 0 2000px 0 rgba(0,0,0,.8);
+*/
+				
+				.full-content {
+					top: 0px;	
+				}
+				h3.service-heading {
+					bottom: -55px;
+				}
+				
+			}
+			
+		}
+	}
+	
+	.testimonials-carousel-wrap {
+		padding: 0em 0 4em;
+		position: relative;
+		z-index: 1009;
+		h2 {
+			margin-bottom: 1em;
+		}
+		.test-content {
+			background: $white;
+			margin-left: -90px;
+			border: 1px solid #efefef;
+			padding: 20px 30px;
+			font-size: .9em;
+			margin-top: 2em;
+			margin-bottom: 2em;
+		}
+		.carousel-indicators {
+			bottom: -40px;
+			margin-bottom: 0;
+			li {
+				background-color: transparent;
+				max-width: 20px;
+				height: 20px;
+				border: 1px solid $brand-secondary;
+				@include round(20px);
+				&.active {
+					background-color: $brand-secondary;
+				}
 			}
 		}
+		
 	}
 }

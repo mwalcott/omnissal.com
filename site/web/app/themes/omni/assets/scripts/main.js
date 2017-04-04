@@ -28,10 +28,6 @@
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
-        $('#hero').carousel({
-	        interval: 6000,
-	        pause: false
-        });
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS

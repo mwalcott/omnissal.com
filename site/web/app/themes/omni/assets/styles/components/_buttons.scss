@@ -1,6 +1,5 @@
 .btn {
-	@include round(0px);
-	text-transform: uppercase;
+	@include round(3px);
 }
 .btn-primary {
 	background: $brand-secondary;

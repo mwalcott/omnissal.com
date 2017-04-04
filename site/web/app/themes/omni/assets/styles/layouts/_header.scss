@@ -9,7 +9,7 @@ header.banner {
 	padding-right: 15px;
 	@include light-shadow();
 	text-align: center;
-	z-index: 200;
+	z-index: 1010;
 	.social {
 		border-top: 1px solid #efefef;
 		position: absolute;

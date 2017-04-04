@@ -74,7 +74,7 @@ if( function_exists('acf_add_options_page') ) {
  */
 function hero() { ?>
 	<div class="hero-wrap">
-		<div id="hero" class="carousel slide" data-ride="carousel">
+		<div id="hero" class="carousel slide" data-ride="false">
 			<ol class="carousel-indicators">
 				<?php
 					$inav = -1; 
