@@ -163,7 +163,6 @@ function hero() { ?>
 				<?php endif; ?>
 			  		  
 		  </div>
-<!--
 			<a class="carousel-control-prev" href="#hero" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
@@ -172,7 +171,6 @@ function hero() { ?>
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>		  
--->
 		</div>
 	</div>
 <?php }
@@ -211,3 +209,16 @@ endif;
 
 }
 add_action('content_builder', __NAMESPACE__ . '\\content_acf');
+
+function before_after() { ?>
+	<?php if( get_field('before_image') && get_field('after_image') ) { ?>
+		<div id="container1" class="twentytwenty-container">
+			<img class="img-fluid" src="<?php the_field('before_image'); ?>"/>
+			<img class="img-fluid" src="<?php the_field('after_image'); ?>"/>
+		</div>
+	<?php } else { ?>
+		<div class="project-featured">
+			<?php the_post_thumbnail('full', array('class' => 'img-fluid')); ?>
+		</div>
+	<?php } ?>
+<?php }

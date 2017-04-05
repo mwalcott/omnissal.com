@@ -19,6 +19,10 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+				$(window).load(function() {
+				  $("#container1").twentytwenty();
+				});
+        
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

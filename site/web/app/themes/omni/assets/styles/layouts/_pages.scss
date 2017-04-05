@@ -12,7 +12,6 @@
 	.carousel-caption {
 		left: 65px;
 		right: 65px;
-		text-align: left;
 		bottom: 50px;
 		h3 {
 			font-size: 2.2em;
@@ -31,18 +30,27 @@
 		margin-left: 65px;
 		margin-right: 65px;
 		bottom: 30px;
+/*
 		-webkit-box-pack: left;
 		-ms-flex-pack: left;
 		justify-content: left;
-		li {
-			background-color: $white;
-			
-			&.active {
-				background-color: $brand-primary;
-			}
-		}	
+*/
 	}
 }
+.carousel-indicators {
+	//bottom: -40px;
+	margin-bottom: 0;
+	li {
+		background-color: $white;
+		max-width: 20px;
+		height: 20px;
+		@include round(20px);
+		&.active {
+			background-color: $brand-primary;
+		}
+	}
+}
+
 
 // Page Header Styles
 .page-header {
@@ -183,13 +191,8 @@ main {
 		}
 		.carousel-indicators {
 			bottom: -40px;
-			margin-bottom: 0;
 			li {
-				background-color: transparent;
-				max-width: 20px;
-				height: 20px;
-				border: 1px solid $brand-secondary;
-				@include round(20px);
+				background-color: $brand-primary;
 				&.active {
 					background-color: $brand-secondary;
 				}
