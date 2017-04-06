@@ -1,6 +1,11 @@
 <?php while (have_posts()) : the_post(); ?>
   <article <?php post_class(); ?>>
     <header>
+	    <?php if( get_field('before_image') && get_field('after_image') ) { ?>
+		    <a href="#FIXME" class="btn btn-primary float-right view-gallery">
+			    View Gallery
+		    </a>
+	    <?php } ?>
       <h1 class="entry-title"><?php the_title(); ?></h1>
 			<cite><?php the_field('location'); ?></cite>
     </header>

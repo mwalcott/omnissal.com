@@ -22,6 +22,12 @@
 				$(window).load(function() {
 				  $("#container1").twentytwenty();
 				});
+
+				$('a.view-gallery').click(function(){
+					$('#container1').removeClass('hide').hide();         
+					$('#project-gallery').show(1000).addClass('active');
+				
+				});
         
       },
       finalize: function() {

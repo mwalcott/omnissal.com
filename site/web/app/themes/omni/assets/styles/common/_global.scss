@@ -7,6 +7,9 @@ body {
 		padding: 0px 50px 50px;
 	}
 }
+p {
+	color: $font-color;
+}
 a {
 	&:hover {
 		text-decoration: none;

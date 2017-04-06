@@ -216,9 +216,64 @@ function before_after() { ?>
 			<img class="img-fluid" src="<?php the_field('before_image'); ?>"/>
 			<img class="img-fluid" src="<?php the_field('after_image'); ?>"/>
 		</div>
-	<?php } else { ?>
-		<div class="project-featured">
-			<?php the_post_thumbnail('full', array('class' => 'img-fluid')); ?>
+
+		<?php 
+		$i = 0;
+		$images = get_field('gallery');
+		
+		if( $images ): ?>
+		<div id="project-gallery" class="carousel slide hide" data-ride="carousel">
+		  <div class="carousel-inner" role="listbox">
+				<div class="carousel-item active">
+					<?php the_post_thumbnail('full', array('class' => 'd-block img-fluid')); ?>
+				</div>
+				<?php foreach( $images as $image ): $i++ ?>
+					<div class="carousel-item">
+						<img class="d-block img-fluid" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+					</div>
+				<?php endforeach; ?>
+		  </div>
+			<a class="carousel-control-prev" href="#project-gallery" role="button" data-slide="prev">
+			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#project-gallery" role="button" data-slide="next">
+			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			  <span class="sr-only">Next</span>
+			</a>				
 		</div>
+		<?php endif; ?>			  
+		
+
+	<?php } else { ?>
+		<?php 
+		$i = 0;
+		$images = get_field('gallery');
+		
+		if( $images ): ?>
+		<div id="project-gallery" class="carousel slide" data-ride="carousel">
+		  <div class="carousel-inner" role="listbox">
+				<?php foreach( $images as $image ): $i++ ?>
+					<?php 
+						$active = '';
+						if($i == 1) {
+							$active = 'active';
+						} 
+					?>
+					<div class="carousel-item <?php echo $active; ?>">
+						<img class="d-block img-fluid" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+					</div>
+				<?php endforeach; ?>
+		  </div>
+			<a class="carousel-control-prev" href="#project-gallery" role="button" data-slide="prev">
+			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#project-gallery" role="button" data-slide="next">
+			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			  <span class="sr-only">Next</span>
+			</a>				
+		</div>
+		<?php endif; ?>			  
 	<?php } ?>
 <?php }
