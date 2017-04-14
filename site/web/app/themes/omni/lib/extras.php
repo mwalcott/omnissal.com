@@ -73,106 +73,44 @@ if( function_exists('acf_add_options_page') ) {
  * Hero
  */
 function hero() { ?>
-	<div class="hero-wrap">
-		<div id="hero" class="carousel slide" data-ride="false">
-			<ol class="carousel-indicators">
-				<?php
-					$inav = -1; 
-					$active = '';
-					$args = array(
-						'post_type' => 'projects',
-						'posts_per_page' => 6,
-						'meta_query' => array(
-							array(
-								'key' => 'featured',
-								'compare' => '==',
-								'value' => '1'
-							)
-						)
-					
-					);
-					
-					// the query
-					$the_query = new \WP_Query( $args ); 
-				?>
+<div class="hero-wrapper">
+	<div class="owl-carousel">
+		<?php
+			$i = 0; 
+			$active = '';
+			$args = array(
+				'post_type' => 'projects',
+				'posts_per_page' => 6,
+				'meta_query' => array(
+					array(
+						'key' => 'featured',
+						'compare' => '==',
+						'value' => '1'
+					)
+				)
 			
-				<?php if ( $the_query->have_posts() ) : ?>
-				
-					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); $inav++; ?>
-						<?php 
-							if($inav == 0) { 
-								$active = 'active'; 
-							} else {
-								$active = '';
-							}  
-						?>
-						<li data-target="#hero" data-slide-to="<?php echo $inav; ?>" class="<?php echo $active; ?>">
-							<?php the_post_thumbnail('thumbnail', array('class' => 'img-fluid')); ?>
-						</li>
-					<?php endwhile; ?>
-				
-					<?php wp_reset_postdata(); ?>
-				
-				<?php endif; ?>
-				
-				
-			</ol>
-		  <div class="carousel-inner" role="listbox">
-			  
-				<?php
-					$i = 0; 
-					$active = '';
-					$args = array(
-						'post_type' => 'projects',
-						'posts_per_page' => 6,
-						'meta_query' => array(
-							array(
-								'key' => 'featured',
-								'compare' => '==',
-								'value' => '1'
-							)
-						)
-					
-					);
-					
-					// the query
-					$the_query = new \WP_Query( $args ); 
-				?>
+			);
 			
-				<?php if ( $the_query->have_posts() ) : ?>
-				
-					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); $i++; ?>
-						<?php 
-							if($i == 1) { 
-								$active = 'active'; 
-							} else {
-								$active = '';
-							}  
-						?>
-						<div class="carousel-item <?php echo $active; ?>">
-							<?php the_post_thumbnail('hero', array('class' => 'd-block img-fluid')); ?>
-							<div class="carousel-caption">
-							  <h3><?php the_title(); ?></h3><br />
-							  <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-md view-project">View Project</a>
-							</div>
-						</div>
-					<?php endwhile; ?>
-				
-					<?php wp_reset_postdata(); ?>
-				
-				<?php endif; ?>
-			  		  
-		  </div>
-			<a class="carousel-control-prev" href="#hero" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#hero" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>		  
-		</div>
+			// the query
+			$the_query = new \WP_Query( $args ); 
+		?>
+	
+		<?php if ( $the_query->have_posts() ) : ?>
+		
+			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+				<div class="owl-image" style="background-image: url(<?php the_post_thumbnail_url( 'full' ); ?>);">
+				  <a href="<?php the_permalink(); ?>" class="btn btn-secondary btn-lg view-project">View Project</a>
+				</div>
+			<?php endwhile; ?>
+		
+			<?php wp_reset_postdata(); ?>
+		
+		<?php endif; ?>
+	  		  
 	</div>
+  <div class="triangle-l"></div>
+  <div class="triangle-r"></div>
+</div>
 <?php }
 add_action('hero_hook', __NAMESPACE__ . '\\hero');
 
@@ -211,69 +149,42 @@ endif;
 add_action('content_builder', __NAMESPACE__ . '\\content_acf');
 
 function before_after() { ?>
-	<?php if( get_field('before_image') && get_field('after_image') ) { ?>
-		<div id="container1" class="twentytwenty-container">
-			<img class="img-fluid" src="<?php the_field('before_image'); ?>"/>
-			<img class="img-fluid" src="<?php the_field('after_image'); ?>"/>
-		</div>
-
-		<?php 
-		$i = 0;
-		$images = get_field('gallery');
-		
-		if( $images ): ?>
-		<div id="project-gallery" class="carousel slide hide" data-ride="carousel">
-		  <div class="carousel-inner" role="listbox">
-				<div class="carousel-item active">
-					<?php the_post_thumbnail('full', array('class' => 'd-block img-fluid')); ?>
-				</div>
+	<div id="project-image-wrap">
+		<?php if( get_field('before_image') && get_field('after_image') ) { ?>
+			<div id="container1" class="twentytwenty-container">
+				<img class="img-fluid" src="<?php the_field('before_image'); ?>"/>
+				<img class="img-fluid" src="<?php the_field('after_image'); ?>"/>
+			</div>
+	
+			<?php 
+			$i = 0;
+			$images = get_field('gallery');
+			
+			if( $images ): ?>
+			<div class="owl-carousel " id="project-gallery">
+				<div class="owl-image" style="background-image: url(<?php the_post_thumbnail_url( 'full' ); ?>);"></div>
 				<?php foreach( $images as $image ): $i++ ?>
-					<div class="carousel-item">
-						<img class="d-block img-fluid" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-					</div>
+					<div class="owl-image" style="background-image: url(<?php echo $image['url']; ?>);"></div>
 				<?php endforeach; ?>
-		  </div>
-			<a class="carousel-control-prev" href="#project-gallery" role="button" data-slide="prev">
-			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			  <span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#project-gallery" role="button" data-slide="next">
-			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			  <span class="sr-only">Next</span>
-			</a>				
-		</div>
-		<?php endif; ?>			  
-		
-
-	<?php } else { ?>
-		<?php 
-		$i = 0;
-		$images = get_field('gallery');
-		
-		if( $images ): ?>
-		<div id="project-gallery" class="carousel slide" data-ride="carousel">
-		  <div class="carousel-inner" role="listbox">
+			</div>
+			<?php endif; ?>			  
+			
+	
+		<?php } else { ?>
+	
+			<?php 
+			$i = 0;
+			$images = get_field('gallery');
+			
+			if( $images ): ?>
+			<div class="owl-carousel" id="project-gallery">
+				<div class="owl-image" style="background-image: url(<?php the_post_thumbnail_url( 'full' ); ?>);"></div>
 				<?php foreach( $images as $image ): $i++ ?>
-					<?php 
-						$active = '';
-						if($i == 1) {
-							$active = 'active';
-						} 
-					?>
-					<div class="carousel-item <?php echo $active; ?>">
-						<img class="d-block img-fluid" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-					</div>
+					<div class="owl-image" style="background-image: url(<?php echo $image['url']; ?>);"></div>
 				<?php endforeach; ?>
-		  </div>
-			<a class="carousel-control-prev" href="#project-gallery" role="button" data-slide="prev">
-			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			  <span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#project-gallery" role="button" data-slide="next">
-			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			  <span class="sr-only">Next</span>
-			</a>				
-		</div>
-		<?php endif; ?>			  
-	<?php } ?>
+			</div>
+	
+			<?php endif; ?>			  
+		<?php } ?>
+	</div>
 <?php }

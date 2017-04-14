@@ -84,12 +84,28 @@
 	}
 }
 
-#project-gallery {
-	&.hide {
-		display: none;
-	}
-	.carousel-inner {
+#project-image-wrap {
+	height: 100vh;
+	overflow: hidden;
+	.owl-image {
 		height: 100vh;
-		overflow: hidden;
+		
+	}
+}
+
+#project-gallery {
+	position: absolute;
+	top: 0;
+	.owl-dots {
+		position: absolute;
+		bottom: 100px;
+		right: 50px;
+		z-index: 2000;
+	}
+	&.hide {
+
+	}
+	&.active {
+
 	}
 }

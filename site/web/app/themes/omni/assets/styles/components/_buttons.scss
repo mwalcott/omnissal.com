@@ -1,5 +1,6 @@
 .btn {
 	@include round(3px);
+	@include transition(.5s);
 }
 .btn-primary {
 	background: $brand-secondary;
@@ -8,8 +9,8 @@
 .btn-secondary {
 	color: $brand-secondary;
 	border: none;
+	color: #666;
 	&:hover {
-		color: $brand-primary;
-		background-color: $white;
+		
 	}
 }

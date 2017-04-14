@@ -99,6 +99,7 @@ main {
 				padding: 0 15px;
 				margin-bottom: 1.5em;
 				font-size: .9em;
+				color: $white;
 				&:last-child {
 					margin-bottom: 0;
 				}
@@ -116,22 +117,23 @@ main {
 				padding: 15px 30px;	
 				@include transition(.5s);
 				z-index: 99;
-				//@include transparent-background($r,$g,$b,$a)
 			}
 			.full-content {
 				top: -500px;
+				bottom: auto;
 				margin-left: -15px;
 				margin-right: -15px;
 				padding: 2em 15px;
 				z-index: 100;
 				position: relative;
 				@include transition(.5s);
+				min-height: 30vh;
 			}
 			
 			&.sprinkler-installation {
 				h3.service-heading,
 				.full-content {
-					@include transparent-background(72,125,165,.9)
+					@include transparent-background(72,125,165,.9);
 				}
 				.btn-secondary {
 					color: $brand-blue;
@@ -140,7 +142,7 @@ main {
 			&.sprinkler-repair {
 				h3.service-heading,
 				.full-content {
-					@include transparent-background(114,71,96,.9)
+					@include transparent-background(114,71,96,.9);
 				}
 				.btn-secondary {
 					color: $brand-purple;
@@ -149,7 +151,7 @@ main {
 			&.landscaping {
 				h3.service-heading,
 				.full-content {
-					@include transparent-background(234,191,63,.9)
+					@include transparent-background(234,191,63,.9);
 				}
 				.btn-secondary {
 					color: $brand-yellow;
@@ -201,4 +203,138 @@ main {
 		}
 		
 	}
+}
+
+body.home {
+	main {
+		.main-content {
+			p {
+				text-align: center;
+			}	
+		}		
+	}
+}
+
+article.testimonials {
+	text-align: left;
+	margin-bottom: 3em;
+	.test-content {
+		//border: 1px solid #efefef;
+		background: $brand-secondary;
+		padding: 2em;
+		@include round(30px);
+		position: relative;
+		margin-bottom: 40px;
+		p {
+			color: $white;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+		}
+		&:after {
+			bottom: -39px;
+			left: 51px;
+			width: 0; 
+			height: 0; 
+			border-left: 19px solid transparent;
+			border-right: 19px solid transparent;
+			
+			border-top: 39px solid $brand-secondary;
+		}
+	}
+	h5 {
+		text-align: left;
+		margin-left: 65px;
+		padding-top: 10px;
+		a {
+			display: inline-block;
+			font-size: .7em;
+			padding: 0;
+		}
+	}
+}
+
+.owl-image {
+	@include cover();
+	height: 80vh;
+	a.btn {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		@include round(0px);
+		text-transform: uppercase;
+	}
+}
+.hero-wrapper {
+	position: relative;
+	.triangle-l,
+	.triangle-r {
+		width: 40%;
+		height: 25px;
+		background: $white;
+		position: absolute;
+		bottom: 0;
+		z-index: 100;
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+		}
+	}
+	.triangle-l {
+		left: 0;
+		&:before {
+			right: -30px;
+			width: 0; 
+			height: 0; 
+			border-left: 0px solid transparent;
+			border-right: 30px solid transparent;
+			
+			border-bottom: 25px solid $white;
+		}
+	}
+	.triangle-r {
+		right: 0;
+		&:before {
+			left: -30px;
+			width: 0; 
+			height: 0; 
+			border-right: 0px solid transparent;
+			border-left: 30px solid transparent;
+			
+			border-bottom: 25px solid $white;
+		}
+	}
+}
+.owl-dots {
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 10px;
+	.owl-dot {
+		display: inline-block;
+		margin: 0 .2em;
+		span {
+			display: block;
+			width: 15px;
+			height: 15px;
+			border: 1px solid $white;
+			@include transparent-background(255,255,255,.6);
+			@include round(15px);
+			@include transition(.3s);
+			&:hover {
+				background-color: $brand-primary;
+				@include transparent-background(255,255,255,1);
+			}
+		}
+		&.active {
+			span {
+				background: $brand-secondary;
+				border: 1px solid $brand-secondary;
+			}
+		}	
+	}
+	
 }

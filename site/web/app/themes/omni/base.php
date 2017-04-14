@@ -54,5 +54,6 @@ use Roots\Sage\Wrapper;
     ?>
     <script src="<?= get_template_directory_uri(); ?>/assets/scripts/jquery.event.move.js"></script>
     <script src="<?= get_template_directory_uri(); ?>/assets/scripts/jquery.twentytwenty.js"></script>
+    <script src="<?= get_template_directory_uri(); ?>/assets/scripts/owl.carousel.js"></script>
   </body>
 </html>
