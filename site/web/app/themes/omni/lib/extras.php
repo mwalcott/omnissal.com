@@ -136,6 +136,10 @@ function content_acf() {
 			if( get_row_layout() == 'testimonial_carousel' ) {
 				get_template_part('templates/acf/testimonial-carousel');
 			}
+
+			if( get_row_layout() == 'columns' ) {
+				get_template_part('templates/acf/columns');
+			}
 									
 		endwhile;
 	

@@ -11,7 +11,7 @@
 			    </div>
 		    </div>
 		    <div class="col-sm-4 consultation">
-			    <h3>Schedule a Consultation</h3>
+			    <?php dynamic_sidebar('sidebar-service'); ?>
 		    </div>
 	    </div>
     </div>

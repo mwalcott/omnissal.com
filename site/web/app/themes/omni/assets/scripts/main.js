@@ -49,6 +49,13 @@
 					$('#project-gallery').show(1000).addClass('active');
 				
 				});
+
+$( ".open-nav" ).click(function() {
+  $( "#menu-primary" ).toggle( "fast", function() {
+    // Animation complete.
+  });
+});
+
         
       },
       finalize: function() {

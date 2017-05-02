@@ -2,9 +2,8 @@ header.banner {
 	position: fixed;
 	top: 0;
 	left: 0;
-	bottom: 0;
+	right: 0;
 	background: $white;
-	width: 250px;
 	padding-left: 15px;
 	padding-right: 15px;
 	@include light-shadow();
@@ -37,7 +36,7 @@ header.banner {
 	}
 	a.brand {
 		display: block;
-		margin: 20% auto;
+		margin: 5px auto;
 		max-width: 200px;
 		font-size: 14px;
 		font-weight: 700;
@@ -45,90 +44,76 @@ header.banner {
 		img {
 			margin: 0 auto 10px;
 			display: block;
-			max-width: 130px;
+			max-width: 100px;
 		}
 		span {
 			display: block;
 			color: $brand-secondary;
 		}
+		@include media-breakpoint-up(sm) {
+			margin: 20% auto;
+		}
+	}
+	@include media-breakpoint-up(sm) {
+		width: 250px;
+		bottom: 0;
+		img {
+			max-width: 130px;
+		}		
+	}
+	.open-nav,
+	.ctc {
+		position: absolute;
+		top: 0;
+		font-size: 1.2em;
+		color: $brand-primary;
+		line-height: 71px;
+		@include transition(.5s);
+		&:hover {
+			color: $brand-secondary;
+			cursor: pointer;
+		}
+	}
+	.open-nav {
+		left: 15px;
+	}
+	.ctc {
+		right: 15px;
 	}
 }
 
 #menu-primary {
 	display: block;
-	margin-bottom: 50px;
-	font-weight: 300;
+	text-align: left;
+	font-size: .9em;
+	display: none;
+	border-top: 1px solid #efefef;
+	padding: 5px 0;
 	li {
-		display: block;
-		position: relative;
+		
 		a {
 			display: block;
 			padding: 5px 0;
-			&:hover {
-				color: $brand-secondary;
-			}
 		}
-		&.active {
-			a {
-				color: $brand-secondary;
-				font-weight: 700;
-			}
-		}
+		
 		.sub-menu {
-			text-align: left;
-			position: absolute;
-			top: 0;
-			left: 100%;
-			background: $brand-secondary;
-			padding: 5px 0;
- 			z-index: 2000;
-			width: 0px;
-			opacity: 0;
-			//@include round(3px);
-			@include transition(.5s);
+			list-style: none;
+			font-size: .9em;
+			padding-left: 0;
+			border-top: 1px solid #efefef;
+			border-bottom: 1px solid #efefef;
+			padding: 5px 10px;
+			margin: 5px 0;
 			li {
-				padding: 0;
 				a {
-					display: block;
-					padding: 5px 15px;
-					color: #fff;
-					font-weight: 400;
-					font-size: 14px;
-					position: relative;
-					white-space: nowrap;
-					overflow: hidden;
-					&:before {
-						content: '';
-						width: 0px;
-						height: 6px;
-						background: $white;
-						position: absolute;
-						left: -2px;
-						top: 50%;
-						margin-top: -3px;
-						@include transition(.5s);
-						@include round(20px);
-					}
-					&:hover {
-						&:before {
-							width: 10px;
-						}
-					}
+					color: $brand-secondary;
 				}
 			}
 		}
-		&:hover {
-			.sub-menu {
-				width: 160px;
-				opacity: 1;
-			}
-		}
-/*
-		&.menu-services {
-			.sub-menu {
-				display: block;
-			}
-		}
-*/
+		
+	}
+	
+	@include media-breakpoint-up(sm) {
+		display: block;
 	}
 }
