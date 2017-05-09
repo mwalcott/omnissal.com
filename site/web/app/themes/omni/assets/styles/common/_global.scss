@@ -13,6 +13,9 @@ body {
 	}
 	@include media-breakpoint-up(sm) {
 		margin-left: 250px;
+		.container-wrap {
+			padding: 0px 50px 50px;
+		}
 	}
 }
 p {
