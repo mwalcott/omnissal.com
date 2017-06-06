@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6aaa31a9f290ed1825a1b09a3902f39",
+    "content-hash": "4c556bd10deadb1b5593f58a6c635549",
     "packages": [
         {
             "name": "composer/installers",
@@ -500,26 +500,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/duplicate-post/"
-        },
-        {
-            "name": "wpackagist-plugin/gmail-smtp",
-            "version": "1.1.2",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/gmail-smtp/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gmail-smtp.zip?timestamp=1495959357",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/gmail-smtp/"
         },
         {
             "name": "wpackagist-plugin/google-analytics-dashboard-for-wp",
